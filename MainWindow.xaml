@@ -1,0 +1,255 @@
+﻿<Window x:Class="bronnikovaitog.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:bronnikovaitog"
+        mc:Ignorable="d"
+        Title="Marathon Skills 2016 - Register for an event" Height="500" Width="700" Icon="/Resources/icon1.png">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="5" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Height="45" VerticalAlignment="Top" Background="#FF525252">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Height="25" Width="60" HorizontalAlignment="Left" Margin="10,0,0,0" Content="Назад" FontSize="13"/>
+            <TextBlock Grid.Column="1" Text="MARATHON SKILLS 2016" Foreground="White" Margin="0,10,0,0" FontSize="18" FontWeight="Bold"/>
+            <Button Grid.Column="2"  Height="25" Width="60" HorizontalAlignment="Right" Margin="0,0,10,0" Content="Logout" FontSize="13"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="110"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Height="110" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" Text="Регистрация на марафон" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF6A6A6A"/>
+                <TextBlock Grid.Row="1" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="80,0,90,0"
+                           Text="Пожалуйста, заполните всю информацию, чтобы зарегистрироваться на Skills Marathon 2016 проводимом в Москве, Russia. С вами свяжутся после регистрации для уточнения оплаты и другой информации." FontSize="14" TextAlignment="Center" Foreground="#FF6B6A6A" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Вид марафона" FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF989898" />
+                        <Grid Grid.Row="1" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="1" TextWrapping="Wrap" Text="42 km Полный марафон ($145)" Foreground="#FF414141" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            </Grid>
+                            <Grid Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="1" TextWrapping="Wrap" Text="21 km Полумарафон ($75)" Foreground="#FF414141" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            </Grid>
+                            <Grid Grid.Row="2"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <CheckBox Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                <TextBlock Grid.Column="1" TextWrapping="Wrap" Text="5 km Малая дистанция ($20)" Foreground="#FF414141" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="45"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Варианты комплектов" FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF989898"  />
+                        <Grid Grid.Row="1" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <RadioButton Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Foreground="#FF414141" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="13">
+                                    <Bold>Вариант А ($0):</Bold> Номер бегуна + RFID браслет.
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <RadioButton Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Foreground="#FF414141" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="13">
+                                    <Bold>Вариант B ($20):</Bold> Вариант А + бейсболка + бутылка воды.
+                                </TextBlock>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <RadioButton Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Foreground="#FF414141" Grid.Column="1" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="13">
+                                    <Bold>Вариант С (45):</Bold> Вариант В + футболка + сувенирный браслет.
+                                </TextBlock>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Детали спонсорства" FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF989898" />
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Взнос:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <ComboBox Grid.Column="1" Width="140" Height="20" Foreground="#FF9E9E9E" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" BorderBrush="#FFF9F9FC" >
+                                <TextBlock Text="Фонд кошек" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </ComboBox>
+                            <Image Height="20" Width="20" Grid.Column="2" Source="C:\Users\Anna\source\repos\bronnikovaitog\Resources\information.png"/>
+                        </Grid>
+                        <Grid Grid.Row="2" VerticalAlignment="Top">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Сумма взноса:" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <ComboBox Grid.Column="1" Width="140" Height="20" Foreground="#FF9E9E9E" HorizontalAlignment="Center" VerticalAlignment="Center" Background="White" BorderBrush="#FFF9F9FC" >
+                                <TextBlock Text="$500" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </ComboBox>
+                        </Grid>
+                        <Grid Grid.Row="3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Height="25" Width="90" Content="Регистрация" HorizontalAlignment="Right" Margin="0,0,10,0" />
+                            <Button Grid.Column="1" Height="25" Width="70" Content="Отмена" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Регистрационный взнос" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" FontWeight="Bold" Foreground="#FF989898"/>
+                        <TextBlock Grid.Row="1" Text="$185" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF989898"/>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+
+
+        </Grid>
+
+
+
+        <Grid Grid.Row="2" Height="35" VerticalAlignment="Bottom" Background="#FF525252">
+            <TextBlock Text="18 дней 8 часов и 17 минут до старта марафона!" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Grid>
+
+    </Grid>
+</Window>
